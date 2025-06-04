@@ -1,9 +1,9 @@
-import React, { use } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router';
 import AuthContext from '../../Provider/AuthContext';
 
 const Navbar = () => {
-    const { user } = use(AuthContext)
+    // const { user } = use(AuthContext)
     const links =
         <>
             <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/">Home</NavLink></li>
@@ -12,7 +12,7 @@ const Navbar = () => {
             <li><NavLink to="/register">Register</NavLink></li>
         </>
     return (
-        <header className="sticky top-0 bg-white shadow z-50">
+        <div className="bg-white shadow z-50">
             <div className="mx-auto flex h-20 max-w-screen items-center gap-8 px-4 sm:px-6 lg:px-8">
                 <a className="block text-teal-600" href="#">
                     <span className="sr-only">Home</span>
@@ -68,7 +68,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
     );
 };
 

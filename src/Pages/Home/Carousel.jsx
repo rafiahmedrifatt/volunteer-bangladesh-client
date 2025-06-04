@@ -14,7 +14,7 @@ const Carousel = () => {
     return (
         <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
-                <section className="bg-white lg:grid lg:h-screen lg:w-screen lg:place-content-center">
+                <section className="lg:grid lg:h-screen lg:w-screen lg:place-content-center">
                     <div
                         className="mx-auto w-screen max-w-screen px-4 py-16 sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32"
                     >
@@ -79,7 +79,7 @@ const Carousel = () => {
                         </svg>
                     </div>
                 </section>
-                <section className="bg-white lg:grid lg:h-screen lg:w-screen lg:place-content-center">
+                <section className="lg:grid lg:h-screen lg:w-screen lg:place-content-center">
                     <div
                         className="mx-auto w-screen max-w-screen px-4 py-16 sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32"
                     >
@@ -144,7 +144,7 @@ const Carousel = () => {
                         </svg>
                     </div>
                 </section>
-                <section className="bg-white lg:grid lg:h-screen lg:w-screen lg:place-content-center">
+                <section className="lg:grid lg:h-screen lg:w-screen lg:place-content-center">
                     <div
                         className="mx-auto w-screen max-w-screen px-4 py-16 sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32"
                     >
@@ -209,7 +209,7 @@ const Carousel = () => {
                         </svg>
                     </div>
                 </section>
-                <section className="bg-white lg:grid lg:h-screen lg:w-screen lg:place-content-center">
+                <section className="lg:grid lg:h-screen lg:w-screen lg:place-content-center">
                     <div
                         className="mx-auto w-screen max-w-screen px-4 py-16 sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32"
                     >

@@ -5,7 +5,7 @@ const Card = ({ postData }) => {
     const { thumbnail, category, deadline, postTitle } = postData;
     const formattedDate = format(new Date(deadline), "dd MMMM yyyy")
     return (
-        <a href="#" className="block rounded-lg p-4 shadow-xs shadow-indigo-100">
+        <div className="block rounded-lg p-4 shadow-xs shadow-indigo-100">
             <img
                 alt=""
                 src={thumbnail}
@@ -32,7 +32,7 @@ const Card = ({ postData }) => {
                     </a>
                 </div>
             </div>
-        </a>
+        </div>
     );
 };
 
