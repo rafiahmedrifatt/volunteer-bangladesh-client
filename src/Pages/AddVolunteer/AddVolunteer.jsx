@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { format } from 'date-fns';
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
@@ -17,17 +18,22 @@ const AddVolunteer = () => {
         e.preventDefault()
         const form = e.target
         const formData = new FormData(form)
-        const formObj = Object.fromEntries(formData)
+        const { organizationName, contactPerson, email, ...data } = Object.fromEntries(formData)
+        data.organizerInfo = { organizationName, contactPerson, email }
+
+
         const formattedDate = format(deadline, 'yyyy-MM-dd')
-        formObj.deadline = formattedDate;
-        console.log(formObj);
+        data.deadline = formattedDate;
+
+        console.log(data);
+
+        axios.post('http://localhost:3000/posts', { data }).then(res => console.log(res))
     };
 
     return (
-        <div className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow-md mt-10">
+        <div className="max-w-xl mx-auto p-6 rounded-lg shadow-md mt-10">
             <h1 className="text-2xl font-bold mb-6 text-center">Add Volunteer Need Post</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
-
                 {/* Thumbnail */}
                 <div>
                     <label className="block mb-1 font-semibold">Thumbnail</label>
@@ -117,12 +123,21 @@ const AddVolunteer = () => {
 
                 {/* Organizer Info */}
                 <div>
+                    <label className="block mb-1 font-semibold">Organization</label>
+                    <input
+                        type="text"
+                        name='organizationName'
+                        className="w-full px-3 py-2 border rounded-md "
+                    />
+                </div>
+                <div>
                     <label className="block mb-1 font-semibold">Organizer Name</label>
                     <input
                         type="text"
                         value={loggedInUser.name}
+                        name='contactPerson'
                         readOnly
-                        className="w-full px-3 py-2 border rounded-md bg-gray-100"
+                        className="w-full px-3 py-2 border rounded-md "
                     />
                 </div>
 
@@ -130,9 +145,10 @@ const AddVolunteer = () => {
                     <label className="block mb-1 font-semibold">Organizer Email</label>
                     <input
                         type="email"
+                        name='email'
                         value={loggedInUser.email}
                         readOnly
-                        className="w-full px-3 py-2 border rounded-md bg-gray-100"
+                        className="w-full px-3 py-2 border rounded-md"
                     />
                 </div>
 

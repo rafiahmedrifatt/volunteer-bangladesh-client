@@ -7,9 +7,8 @@ const Navbar = () => {
     const links =
         <>
             <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/">Home</NavLink></li>
-            <li><NavLink to="/posts">Posts</NavLink></li>
-            <li><NavLink to="/login">Login</NavLink></li>
-            <li><NavLink to="/register">Register</NavLink></li>
+            <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/posts">Posts</NavLink></li>
+            <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/addVolunteerPosts">Add Posts</NavLink></li>
         </>
     return (
         <div className="bg-white shadow z-50">

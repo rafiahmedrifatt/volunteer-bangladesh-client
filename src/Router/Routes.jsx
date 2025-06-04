@@ -29,7 +29,7 @@ export const Router = createBrowserRouter([
                 loader: () => fetch('http://localhost:3000/posts')
             },
             {
-                path: 'addVolunteer',
+                path: 'addVolunteerPosts',
                 Component: AddVolunteer
             },
         ]
