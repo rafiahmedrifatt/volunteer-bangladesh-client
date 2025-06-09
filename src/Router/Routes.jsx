@@ -45,11 +45,11 @@ export const Router = createBrowserRouter([
                 Component: MyPosts,
                 children: [
                     {
-                        path: '/myPosts/neededPosts',
+                        path: 'neededPosts',
                         Component: MyNeededPost
                     },
                     {
-                        path: '/myPosts/application',
+                        path: 'applications',
                         Component: MyApplications
                     }
                 ]

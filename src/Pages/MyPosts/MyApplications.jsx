@@ -2,7 +2,7 @@ import React from 'react';
 
 const MyApplications = () => {
     return (
-        <div className='bg-green-500 h-screen'>
+        <div >
             this is where i will show my applicaitons
         </div>
     );
