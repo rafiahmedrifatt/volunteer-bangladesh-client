@@ -1,8 +1,9 @@
 import { format } from 'date-fns';
 import React from 'react';
+import { Link } from 'react-router';
 
 const Card = ({ postData }) => {
-    const { thumbnail, category, deadline, postTitle } = postData;
+    const { thumbnail, category, deadline, postTitle, _id } = postData;
     const formattedDate = format(new Date(deadline), "dd MMMM yyyy")
     return (
         <div className="block rounded-lg p-4 shadow-xs shadow-indigo-100">
@@ -24,12 +25,13 @@ const Card = ({ postData }) => {
                 </div>
 
                 <div className="mt-6 flex justify-center gap-8 text-xs">
-                    <a
+                    <Link
+                        to={`/posts/${_id}`}
                         className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
-                        href="#"
+
                     >
                         View Details
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

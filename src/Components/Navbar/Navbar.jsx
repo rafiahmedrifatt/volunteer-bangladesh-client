@@ -6,9 +6,18 @@ const Navbar = () => {
     // const { user } = use(AuthContext)
     const links =
         <>
-            <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/">Home</NavLink></li>
-            <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/posts">Posts</NavLink></li>
-            <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/addVolunteerPosts">Add Posts</NavLink></li>
+            <li>
+                <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/">Home</NavLink>
+            </li>
+            <li>
+                <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/posts">Posts</NavLink>
+            </li>
+            <li>
+                <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/addVolunteerPosts">Add Posts</NavLink>
+            </li>
+            <li>
+                <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/myPosts">My Posts</NavLink>
+            </li>
         </>
     return (
         <div className="bg-white shadow z-50">
