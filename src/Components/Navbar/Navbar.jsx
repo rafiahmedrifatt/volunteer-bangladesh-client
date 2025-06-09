@@ -16,7 +16,7 @@ const Navbar = () => {
                 <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/addVolunteerPosts">Add Posts</NavLink>
             </li>
             <li>
-                <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/myPosts">My Posts</NavLink>
+                <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="myPosts/neededPosts">My Posts</NavLink>
             </li>
         </>
     return (

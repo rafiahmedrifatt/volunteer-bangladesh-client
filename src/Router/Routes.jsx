@@ -46,7 +46,7 @@ export const Router = createBrowserRouter([
                 children: [
                     {
                         path: 'neededPosts',
-                        Component: MyNeededPost
+                        Component: MyNeededPost,
                     },
                     {
                         path: 'applications',

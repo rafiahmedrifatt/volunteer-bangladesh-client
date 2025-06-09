@@ -1,15 +1,12 @@
 import axios from 'axios';
 import { format } from 'date-fns';
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import AuthContext from '../../Provider/AuthContext';
 
 const AddVolunteer = () => {
-    // Simulate a logged-in user
-    const loggedInUser = {
-        name: 'Jane Doe',
-        email: 'jane.doe@example.com',
-    };
+    const { user } = use(AuthContext)
 
     const [deadline, setDeadline] = useState(null);
     console.log(deadline);
@@ -134,7 +131,7 @@ const AddVolunteer = () => {
                     <label className="block mb-1 font-semibold">Organizer Name</label>
                     <input
                         type="text"
-                        value={loggedInUser.name}
+                        value={user.name}
                         name='contactPerson'
                         readOnly
                         className="w-full px-3 py-2 border rounded-md "
@@ -146,7 +143,7 @@ const AddVolunteer = () => {
                     <input
                         type="email"
                         name='email'
-                        value={loggedInUser.email}
+                        value={user.email}
                         readOnly
                         className="w-full px-3 py-2 border rounded-md"
                     />
