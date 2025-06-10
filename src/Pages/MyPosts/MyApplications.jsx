@@ -1,29 +1,67 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AuthData from '../../hook/AuthData';
 
 const MyApplications = () => {
     const { user } = AuthData()
-    const [applicaition, setApplication] = useState()
-    axios.get(`http://localhost:3000/posts?email=${user?.email}`).then(res => setApplication(res.data))
+    const [application, setApplication] = useState()
+    useEffect(() => {
+        axios.get(`http://localhost:3000/posts?email=${user?.email}`).then(res => setApplication(res.data))
+    }, [])
+    console.log(application);
     return (
-        <ul className="list bg-base-100 rounded-box shadow-md">
-            {
-                applicaition?.map(singleApplication =>
-                    <li key={singleApplication._id} className="list-row">
-                        <div className="text-4xl font-thin opacity-30 tabular-nums">01</div>
-                        <div><img className="size-10 rounded-box" src={applicaition?.thumbnail} /></div>
-                        <div className="list-col-grow">
-                            <div>Dio Lupa</div>
-                            <div className="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
-                        </div>
-                        <button className="btn btn-square btn-ghost">
-                            <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
-                        </button>
-                    </li>
-                )
-            }
-        </ul>
+        <div className="overflow-x-auto">
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <label>
+                                No
+                            </label>
+                        </th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Deadline</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        application?.map((singleApplication, index) =>
+                            <tr key={singleApplication._id}>
+                                <th>
+                                    <label>
+                                        {index + 1}
+                                    </label>
+                                </th>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle h-12 w-12">
+                                                <img
+                                                    src={singleApplication.thumbnail}
+                                                    alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">{singleApplication.postTitle}</div>
+                                            <div className="text-sm opacity-50">{singleApplication.category}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {singleApplication.location}
+                                </td>
+                                <td>{singleApplication.deadline}</td>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs">details</button>
+                                </th>
+                            </tr>
+                        )
+                    }
+                </tbody>
+            </table>
+        </div>
     );
 };
 
