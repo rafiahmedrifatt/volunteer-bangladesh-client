@@ -1,9 +1,10 @@
-import React, { use } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router';
-import AuthContext from '../../Provider/AuthContext';
+import Swal from 'sweetalert2';
+import AuthData from '../../hook/AuthData';
 
 const Register = () => {
-    const { signUp, update } = use(AuthContext)
+    const { signUp, update } = AuthData()
     const navigate = useNavigate()
 
     const handleSubmit = e => {
@@ -16,6 +17,12 @@ const Register = () => {
                 {
                     update(name, photo)
                     navigate('/')
+                    Swal.fire({
+                        title: "You Have Registered Successfully!",
+                        icon: "success",
+                        draggable: true
+                    });
+
                 }
             })
             .catch(err => console.log(err))

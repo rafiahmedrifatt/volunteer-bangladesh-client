@@ -6,7 +6,6 @@ import Home from "../Pages/Home/Home";
 import AllPost from "../Pages/AllPost/AllPost";
 import AddVolunteer from "../Pages/AddVolunteer/AddVolunteer";
 import PostDetails from "../Pages/PostDetails/PostDetails";
-import MyPosts from "../Pages/MyPosts/MyPosts";
 import MyNeededPost from "../Pages/MyPosts/MyNeededPost";
 import MyApplications from "../Pages/MyPosts/MyApplications";
 
@@ -41,18 +40,12 @@ export const Router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:3000/posts/${params.id}`)
             },
             {
-                path: 'myPosts',
-                Component: MyPosts,
-                children: [
-                    {
-                        path: 'neededPosts',
-                        Component: MyNeededPost,
-                    },
-                    {
-                        path: 'applications',
-                        Component: MyApplications
-                    }
-                ]
+                path: 'neededPosts',
+                Component: MyNeededPost,
+            },
+            {
+                path: 'applications',
+                Component: MyApplications
             }
         ]
     }

@@ -1,11 +1,11 @@
-import React, { use } from 'react';
-import AuthContext from '../../Provider/AuthContext';
+import React from 'react';
 import axios from 'axios';
+import AuthData from '../../hook/AuthData';
 
 const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
     const { category, deadline, description, location, organizerInfo, postTitle, thumbnail, _id } = data;
     // const { contactPerson, email, organizationName } = organizerInfo;
-    const { user } = use(AuthContext)
+    const { user } = AuthData()
 
     console.log(_id);
     const handleSubmit = (e) => {

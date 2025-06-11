@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { format } from 'date-fns';
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import AuthContext from '../../Provider/AuthContext';
+import AuthData from '../../hook/AuthData';
 
 const AddVolunteer = () => {
-    const { user } = use(AuthContext)
+    const { user } = AuthData()
 
     const [deadline, setDeadline] = useState(null);
     console.log(deadline);

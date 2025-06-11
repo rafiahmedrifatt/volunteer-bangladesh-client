@@ -1,14 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import AuthContext from '../../Provider/AuthContext';
+import React from 'react';
 import AuthData from '../../hook/AuthData';
 
 const MyNeededPost = () => {
     const { user } = AuthData()
-    const [posts, setPosts] = useState(null)
-    useEffect(() => {
-        fetch(`http://localhost:3000/posts?email=${user?.email}`).then(res => res.json()).then(data => setPosts(data))
-    }, [])
-    console.log(posts);
     return (
         <div className="overflow-x-auto">
             <table className="table">
@@ -25,7 +19,7 @@ const MyNeededPost = () => {
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                {/* <tbody>
                     {
                         posts?.map((singleApplication, index) =>
                             <tr key={singleApplication._id}>
@@ -59,7 +53,7 @@ const MyNeededPost = () => {
                             </tr>
                         )
                     }
-                </tbody>
+                </tbody> */}
             </table>
         </div>
     );

@@ -1,10 +1,10 @@
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router';
-import AuthContext from '../../Provider/AuthContext';
 import Tippy from '@tippyjs/react';
+import AuthData from '../../hook/AuthData';
 
 const Navbar = () => {
-    const { user, logOut } = use(AuthContext)
+    const { user, logOut } = AuthData()
     const [clicked, setClicked] = useState(false)
     console.log(clicked);
     const links =
@@ -15,20 +15,18 @@ const Navbar = () => {
             <li>
                 <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/posts">Posts</NavLink>
             </li>
+
             <li>
-                <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/addVolunteerPosts">Add Posts</NavLink>
-            </li>
-            <li>
-                {/* change popover-1 and --anchor-1 names. Use unique names for each dropdown */}
-                {/* For TSX uncomment the commented types below */}
                 <button className="text-gray-500 transition hover:text-gray-500/75" popoverTarget="popover-1" style={{ anchorName: "--anchor-1" } /* as React.CSSProperties */}>
-                    Button
+                    My profile
                 </button>
 
                 <ul className="dropdown menu w-52 rounded-box bg-base-100 shadow-sm"
                     popover="auto" id="popover-1" style={{ positionAnchor: "--anchor-1" } /* as React.CSSProperties */}>
-                    <li><NavLink to='myPosts/neededPosts'>My Added Post</NavLink></li>
-                    <li><NavLink to='myPosts/applications'>My Volunteer Request</NavLink></li>
+                    <li>
+                        <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/addVolunteerPosts">Add Volunteer Need Posts</NavLink>
+                    </li>
+                    <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to='neededPosts'>Manage My Posts</NavLink></li>
                 </ul>
             </li>
         </>
