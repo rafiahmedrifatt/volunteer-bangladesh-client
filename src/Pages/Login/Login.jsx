@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import AuthData from '../../hook/AuthData';
 
 const Login = () => {
+    const location = useLocation()
+    console.log(location);
     const navigate = useNavigate()
     const { signIn, googleSignIn } = AuthData()
     const handleSubmit = (e) => {
@@ -10,12 +12,12 @@ const Login = () => {
         const form = e.target
         const email = form.email.value;
         const password = form.password.value;
-        signIn(email, password).then(res => console.log(res)).then(err => console.log(err))
+        signIn(email, password).then(() => navigate(location.state ? location.state : '')).then(err => console.log(err))
     }
 
     const handleGoogleSignIn = () => {
         googleSignIn()
-            .then(() => navigate('/'))
+            .then(() => navigate(location.state ? location.state : '/'))
             .catch(err => console.log(err))
     }
     return (

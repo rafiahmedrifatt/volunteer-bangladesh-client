@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import AuthData from '../../hook/AuthData';
+import Swal from 'sweetalert2';
 
 const AddVolunteer = () => {
     const { user } = AuthData()
@@ -23,8 +24,16 @@ const AddVolunteer = () => {
         data.deadline = formattedDate;
 
         console.log(data);
-
-        axios.post('http://localhost:3000/posts', { data }).then(res => console.log(res))
+        axios.post('http://localhost:3000/posts', { data }).then(res => {
+            if (res.data.insertedId) {
+                Swal.fire({
+                    title: "Post Added Successfully!",
+                    icon: "success",
+                    draggable: true
+                });
+                e.target.reset()
+            }
+        })
     };
 
     return (
@@ -37,6 +46,7 @@ const AddVolunteer = () => {
                     <input
                         type="text"
                         name='thumbnail'
+                        placeholder='Thumbnail'
                         className="w-full px-3 py-2 border rounded-md"
                         required
                     />
@@ -118,20 +128,11 @@ const AddVolunteer = () => {
                     />
                 </div>
 
-                {/* Organizer Info */}
-                <div>
-                    <label className="block mb-1 font-semibold">Organization</label>
-                    <input
-                        type="text"
-                        name='organizationName'
-                        className="w-full px-3 py-2 border rounded-md "
-                    />
-                </div>
                 <div>
                     <label className="block mb-1 font-semibold">Organizer Name</label>
                     <input
                         type="text"
-                        value={user.name}
+                        value={user.displayName}
                         name='contactPerson'
                         readOnly
                         className="w-full px-3 py-2 border rounded-md "

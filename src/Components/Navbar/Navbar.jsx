@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router';
 import Tippy from '@tippyjs/react';
 import AuthData from '../../hook/AuthData';
 
 const Navbar = () => {
     const { user, logOut } = AuthData()
-    const [clicked, setClicked] = useState(false)
-    console.log(clicked);
+
     const links =
         <>
             <li>
@@ -29,6 +28,9 @@ const Navbar = () => {
                     <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to='neededPosts'>Manage My Posts</NavLink></li>
                 </ul>
             </li>
+            <li>
+                <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/addVolunteerPosts">Add Posts</NavLink>
+            </li>
         </>
 
     const hoveredContent = <div
@@ -41,10 +43,7 @@ const Navbar = () => {
 
         <div className="p-2">
             <button
-                onClick={() => {
-                    logOut()
-                    setClicked(!clicked)
-                }}
+                onClick={() => logOut()}
                 className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
                 role="menuitem"
             >
@@ -71,9 +70,9 @@ const Navbar = () => {
         <div className="mx-auto max-w-screen px-4 sm:px-6 lg:px-8 shadow">
             <div className="flex h-20 items-center justify-between">
                 <div className="flex-1 md:flex md:items-center md:gap-12">
-                    <a className="block text-teal-600" href="#">
-                        <img src="https://i.postimg.cc/8cvb6ZK9/volunteer-icon-29232.png" className="h-16" alt="" />
-                    </a>
+                    <Link to='/' className="block text-teal-600" href="#">
+                        <img src="https://img.freepik.com/free-vector/volunteers-group-joining-hand-background-health-charity-camp-vector_1017-48265.jpg?t=st=1749756910~exp=1749760510~hmac=af3de033b93408f7fd85079ff458f29527b3eb674b2f69ac35bb7446fbc6f852&w=2000" className="h-20" alt="" />
+                    </Link>
                 </div>
 
                 <div className="md:flex md:items-center md:gap-12">
@@ -86,7 +85,6 @@ const Navbar = () => {
                     <div className="hidden md:relative md:block">
                         {
                             user?.email || user?.name ? <button
-                                onClick={() => setClicked(!clicked)}
                                 type="button"
                                 className="overflow-hidden rounded-full border border-gray-300 shadow-inner"
                             >
