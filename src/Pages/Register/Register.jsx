@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import AuthData from '../../hook/AuthData';
 
 const Register = () => {
     const { signUp, update } = AuthData()
+    const [error, setError] = useState('')
     const navigate = useNavigate()
 
     const handleSubmit = e => {
@@ -12,6 +13,12 @@ const Register = () => {
         const form = e.target
         const formData = new FormData(form)
         const { email, password, name, photo } = Object.fromEntries(formData.entries())
+        const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/
+        if (!regex.test(password)) {
+            setError('Must have an Uppercase letter in the password. Must have a Lowercase letter in the password. Length must be at least 6 character')
+            return
+        }
+        setError('')
         signUp(email, password)
             .then(() => {
                 {
@@ -50,6 +57,7 @@ const Register = () => {
                     <button type='submit' className="btn btn-neutral mt-4">Register</button>
                 </div>
                 <p className='text-center mt-5'>Already Registered? <Link to='/login' className='border-b-2 border-blue-300'>Login Now</Link></p>
+                <p className='text-red-500 mt-3'>{error}</p>
             </form>
 
             <div>
