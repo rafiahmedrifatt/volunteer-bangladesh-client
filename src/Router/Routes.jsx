@@ -45,7 +45,7 @@ export const Router = createBrowserRouter([
             },
             {
                 path: 'neededPosts',
-                Component: MyNeededPost,
+                element: <PrivateRoute><MyNeededPost /></PrivateRoute>
             },
             {
                 path: 'applications',

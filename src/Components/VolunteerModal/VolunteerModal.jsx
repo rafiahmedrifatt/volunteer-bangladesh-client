@@ -13,11 +13,11 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
         const form = e.target;
         const formData = new FormData(form)
         const formObj = Object.fromEntries(formData.entries())
+        console.log(formObj);
         axios.post('http://localhost:3000/volunteer', { formObj })
             .then(res => {
                 if (res.data.insertedId) {
-                    axios.patch(`http://localhost:3000/posts/${_id}`).then(res => {
-                        console.log(res)
+                    axios.patch(`http://localhost:3000/posts/${_id}`).then(() => {
                         setVolunteersNumber(volunteersNumber - 1)
                     }).catch(err => console.log(err))
                 }

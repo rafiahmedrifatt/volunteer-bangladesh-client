@@ -1,14 +1,13 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import AuthData from '../../hook/AuthData';
 
 const MyApplications = () => {
     const { user } = AuthData()
-    const [application, setApplication] = useState()
+    const [applications, setApplications] = useState([])
+    console.log(applications);
     useEffect(() => {
-        axios.get(`http://localhost:3000/posts?email=${user?.email}`).then(res => setApplication(res.data))
-    }, [])
-    console.log(application);
+        fetch(`http://localhost:3000/myApplication?email=${user?.email}`).then(res => res.json()).then(data => setApplications(data))
+    }, [user])
     return (
         <div className="overflow-x-auto">
             <table className="table">
@@ -27,7 +26,7 @@ const MyApplications = () => {
                 </thead>
                 <tbody>
                     {
-                        application?.map((singleApplication, index) =>
+                        applications?.map((singleApplication, index) =>
                             <tr key={singleApplication._id}>
                                 <th>
                                     <label>
