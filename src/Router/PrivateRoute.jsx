@@ -6,7 +6,7 @@ import AuthData from '../hook/AuthData';
 const PrivateRoute = ({ children }) => {
     const { user, loading } = AuthData()
     if (loading) {
-        return Loader;
+        return <Loader />;
     }
     if (user && user.email) {
         return <div>{children}</div>

@@ -12,7 +12,7 @@ const Login = () => {
         const form = e.target
         const email = form.email.value;
         const password = form.password.value;
-        signIn(email, password).then(() => navigate(location.state ? location.state : '')).then(err => console.log(err))
+        signIn(email, password).then(() => navigate(location.state ? location.state : '')).catch(err => console.log(err))
     }
 
     const handleGoogleSignIn = () => {

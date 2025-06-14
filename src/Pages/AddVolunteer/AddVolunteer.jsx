@@ -10,7 +10,6 @@ const AddVolunteer = () => {
     const { user } = AuthData()
 
     const [deadline, setDeadline] = useState(null);
-    console.log(deadline);
 
     const handleSubmit = (e) => {
         e.preventDefault()

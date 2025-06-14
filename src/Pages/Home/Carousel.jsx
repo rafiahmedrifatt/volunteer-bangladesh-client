@@ -1,5 +1,6 @@
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
+import { Link } from 'react-router';
 
 const Carousel = () => {
     const options = { loop: true }
@@ -29,12 +30,12 @@ const Carousel = () => {
                             </p>
 
                             <div className="mt-4 flex gap-4 sm:mt-6">
-                                <a
+                                <Link
                                     className="inline-block rounded border px-5 py-3 font-medium bg-gray-100 text-teal-600 transition hover:text-teal-600/75"
-                                    href="#"
+                                    to="/posts"
                                 >
                                     Get Started
-                                </a>
+                                </Link>
 
                                 <a
                                     className="inline-block rounded border px-5 py-3 font-medium shadow-sm bg-teal-600 text-white transition hover:bg-teal-700"
@@ -64,12 +65,12 @@ const Carousel = () => {
                             </p>
 
                             <div className="mt-4 flex gap-4 sm:mt-6">
-                                <a
+                                <Link
                                     className="inline-block rounded border px-5 py-3 font-medium bg-gray-100 text-teal-600 transition hover:text-teal-600/75"
-                                    href="#"
+                                    to="/posts"
                                 >
                                     Get Started
-                                </a>
+                                </Link>
 
                                 <a
                                     className="inline-block rounded border px-5 py-3 font-medium shadow-sm bg-teal-600 text-white transition hover:bg-teal-700"
@@ -99,12 +100,12 @@ const Carousel = () => {
                             </p>
 
                             <div className="mt-4 flex gap-4 sm:mt-6">
-                                <a
+                                <Link
                                     className="inline-block rounded border px-5 py-3 font-medium bg-gray-100 text-teal-600 transition hover:text-teal-600/75"
-                                    href="#"
+                                    to="/posts"
                                 >
                                     Get Started
-                                </a>
+                                </Link>
 
                                 <a
                                     className="inline-block rounded border px-5 py-3 font-medium shadow-sm bg-teal-600 text-white transition hover:bg-teal-700"
