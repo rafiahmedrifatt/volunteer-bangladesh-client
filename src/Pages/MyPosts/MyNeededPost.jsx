@@ -8,7 +8,6 @@ import PostModal from '../../Components/PostModal/PostModal';
 const MyNeededPost = () => {
     const { user } = AuthData()
     const [posts, setPosts] = useState([]);
-    console.log(user);
     useEffect(() => {
         if (user?.email) {
             fetch(`http://localhost:3000/posts?email=${user.email}`)
@@ -38,7 +37,7 @@ const MyNeededPost = () => {
                     </thead>
                     <tbody>
                         {
-                            posts?.map((singleApplication, index) =>
+                            posts.map((singleApplication, index) =>
                                 <tr key={singleApplication._id}>
                                     <th>
                                         <label>
@@ -78,7 +77,6 @@ const MyNeededPost = () => {
                 </table> : <div>
                     <EmptyProduct title={'You did not post any volunteer needed posts'} />
                     <button>Add Posts Now</button>
-
                 </div>
             }
             {/* Open the modal using document.getElementById('ID').showModal() method */}

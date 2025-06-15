@@ -4,7 +4,6 @@ import AuthData from '../../hook/AuthData';
 const MyApplications = () => {
     const { user } = AuthData()
     const [applications, setApplications] = useState([])
-    console.log(applications);
     useEffect(() => {
         fetch(`http://localhost:3000/myApplication?email=${user?.email}`).then(res => res.json()).then(data => setApplications(data))
     }, [user])

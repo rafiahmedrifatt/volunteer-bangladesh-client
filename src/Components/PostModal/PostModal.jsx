@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
 import AuthData from '../../hook/AuthData';
 import DatePicker from 'react-datepicker';
+import axios from 'axios';
 
 const PostModal = ({ singleApplication }) => {
-    const { thumbnail, postTitle, description, volunteersNeeded, deadline, category } = singleApplication;
-    console.log(deadline);
+    console.log(singleApplication);
+    const { thumbnail, postTitle, description, volunteersNeeded, deadline, category, _id } = singleApplication;
+    const { user } = AuthData()
     const [date, setDate] = useState(deadline)
     const handleSubmit = e => {
         e.preventDefault()
+        const form = e.target;
+        const formData = new FormData(form)
+        const formObj = Object.fromEntries(formData);
+        const { contactPerson, email, ...rest } = formObj;
+        console.log(contactPerson, email);
+        rest.deadline = date
+        axios.patch(`http://localhost:3000/updatePosts/${_id}`, rest).then(response => {
+            console.log('Update successful:', response.data);
+        }).catch(error => {
+            console.error('Update failed:', error);
+        });
     }
     return (
         <dialog id="my_modal_2" className="modal p-10">
@@ -110,7 +123,27 @@ const PostModal = ({ singleApplication }) => {
                         </div>
 
 
+                        <div>
+                            <label className="block mb-1 font-semibold">Organizer Name</label>
+                            <input
+                                type="text"
+                                value={user.displayName}
+                                name='contactPerson'
+                                readOnly
+                                className="w-full px-3 py-2 border rounded-md "
+                            />
+                        </div>
 
+                        <div>
+                            <label className="block mb-1 font-semibold">Organizer Email</label>
+                            <input
+                                type="email"
+                                name='email'
+                                value={user.email}
+                                readOnly
+                                className="w-full px-3 py-2 border rounded-md"
+                            />
+                        </div>
 
                         {/* Add Post Button */}
                         <div>
