@@ -22,8 +22,12 @@ const AddVolunteer = () => {
 
         const formattedDate = format(deadline, 'yyyy-MM-dd')
         data.deadline = formattedDate;
-
-        axios.post('http://localhost:3000/posts', { data }).then(res => {
+        console.log(data);
+        axios.post('http://localhost:3000/posts', { data }, {
+            headers: {
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(res => {
             if (res.data.insertedId) {
                 Swal.fire({
                     title: "Post Added Successfully!",

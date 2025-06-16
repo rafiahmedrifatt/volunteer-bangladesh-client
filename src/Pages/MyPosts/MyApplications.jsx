@@ -27,7 +27,7 @@ const MyApplications = () => {
             {
                 applications.length === 0 ? <div className='h-[60vh] mt-10 bg-green-100 flex flex-col gap-5 items-center justify-center'>
                     <p className='text-3xl font-bold'>You don't have any volunteer Requests pending</p>
-                    <Link to='/addVolunteerPosts' className='btn btn-success text-white'>Become a volunteer</Link>
+                    <Link to='/posts' className='btn btn-success text-white'>Become a volunteer</Link>
                 </div> : <table className="table">
                     <thead>
                         <tr>

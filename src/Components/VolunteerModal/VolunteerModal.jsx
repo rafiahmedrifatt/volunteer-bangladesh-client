@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import AuthData from '../../hook/AuthData';
+import Swal from 'sweetalert2';
 
 const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
     const { category, deadline, description, location, organizerInfo, postTitle, thumbnail, _id } = data;
@@ -20,6 +21,12 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                         setVolunteersNumber(volunteersNumber - 1)
                     }).catch(err => console.log(err))
                 }
+                Swal.fire({
+                    title: "Successfully requested for volunteering! ",
+                    icon: "success",
+                    draggable: true
+                });
+                document.getElementById('my_modal_3').close()
             })
             .catch(err => console.log(err))
     }

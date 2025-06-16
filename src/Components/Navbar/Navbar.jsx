@@ -68,7 +68,7 @@ const Navbar = () => {
             <div className="flex h-20 items-center justify-between">
                 <div className="flex-1 md:flex md:items-center md:gap-12">
                     <Link to='/' className="block text-teal-600" href="#">
-                        <img src="https://img.freepik.com/free-vector/volunteers-group-joining-hand-background-health-charity-camp-vector_1017-48265.jpg?t=st=1749756910~exp=1749760510~hmac=af3de033b93408f7fd85079ff458f29527b3eb674b2f69ac35bb7446fbc6f852&w=2000" className="h-20" alt="" />
+                        <p className='text-2xl font-bold text-green-500'>Volunteer Bangladesh</p>
                     </Link>
                 </div>
 

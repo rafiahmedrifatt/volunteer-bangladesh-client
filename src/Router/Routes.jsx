@@ -9,11 +9,13 @@ import PostDetails from "../Pages/PostDetails/PostDetails";
 import MyNeededPost from "../Pages/MyPosts/MyNeededPost";
 import MyApplications from "../Pages/MyPosts/MyApplications";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const Router = createBrowserRouter([
     {
         path: '/',
         Component: MainLayouts,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -49,7 +51,7 @@ export const Router = createBrowserRouter([
             },
             {
                 path: 'applications',
-                Component: MyApplications
+                element: <PrivateRoute><MyApplications /></PrivateRoute>
             }
         ]
     }
