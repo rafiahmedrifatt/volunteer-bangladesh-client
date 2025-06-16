@@ -4,7 +4,6 @@ import AuthData from '../../hook/AuthData';
 
 const Login = () => {
     const location = useLocation()
-    console.log(location);
     const navigate = useNavigate()
     const { signIn, googleSignIn } = AuthData()
     const handleSubmit = (e) => {

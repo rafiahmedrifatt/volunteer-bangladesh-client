@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import AuthData from '../../hook/AuthData';
 import DatePicker from 'react-datepicker';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
-const PostModal = ({ singleApplication }) => {
-    console.log(singleApplication);
+const PostModal = ({ singleApplication, index }) => {
     const { thumbnail, postTitle, description, volunteersNeeded, deadline, category, _id } = singleApplication;
     const { user } = AuthData()
     const [date, setDate] = useState(deadline)
@@ -14,16 +14,23 @@ const PostModal = ({ singleApplication }) => {
         const formData = new FormData(form)
         const formObj = Object.fromEntries(formData);
         const { contactPerson, email, ...rest } = formObj;
-        console.log(contactPerson, email);
+        (contactPerson, email);
         rest.deadline = date
         axios.patch(`http://localhost:3000/updatePosts/${_id}`, rest).then(response => {
-            console.log('Update successful:', response.data);
+            if (response.data.modifiedCount > 0) {
+                document.getElementById(`my_modal_${index}`).close()
+                Swal.fire({
+                    title: "Post updated successfully",
+                    icon: "success",
+                    draggable: true
+                });
+            }
         }).catch(error => {
             console.error('Update failed:', error);
         });
     }
     return (
-        <dialog id="my_modal_2" className="modal p-10">
+        <dialog id={`my_modal_${index}`} className="modal p-10">
             <div className="modal-box m-10">
                 <div className="max-w-xl mx-auto p-6 rounded-lg mt-10">
                     <h1 className="text-2xl font-bold mb-6 text-center">Add Volunteer Need Post</h1>

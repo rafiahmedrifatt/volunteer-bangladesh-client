@@ -7,7 +7,6 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
     // const { contactPerson, email, organizationName } = organizerInfo;
     const { user } = AuthData()
 
-    console.log(_id);
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;

@@ -4,6 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router';
 import EmptyProduct from '../../Components/EmptyProduct/EmptyProduct';
 import PostModal from '../../Components/PostModal/PostModal';
+import axios from 'axios';
 
 const MyNeededPost = () => {
     const { user } = AuthData()
@@ -15,13 +16,22 @@ const MyNeededPost = () => {
                 .then(data => setPosts(data));
         }
     }, [user]);
+    console.log(posts);
+
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:3000/posts/${id}`).then(res => console.log(res)).catch(err => console.log(err))
+    }
+
     return (
         <div className="overflow-x-auto m-5">
             <div className='w-full flex justify-end'>
                 <Link to="/applications" className='btn btn-success text-white'>See Your Volunteer Requests <FaArrowRight /></Link>
             </div>
             {
-                posts ? <table className="table mt-10">
+                posts.length === 0 ? <div className='h-[60vh] mt-10 bg-green-100 flex flex-col gap-5 items-center justify-center'>
+                    <p className='text-3xl font-bold'>You dont have any volunteer needed posts</p>
+                    <Link to='/addVolunteerPosts' className='btn btn-success text-white'>Add Posts Now</Link>
+                </div> : <table className="table mt-10">
                     <thead>
                         <tr>
                             <th>
@@ -65,19 +75,16 @@ const MyNeededPost = () => {
                                     <td>{singleApplication.deadline}</td>
                                     <th>
                                         <div className='flex gap-5'>
-                                            <button onClick={() => document.getElementById('my_modal_2').showModal()} className="btn btn-success btn-xs text-white">Update</button>
-                                            <PostModal singleApplication={singleApplication} />
-                                            <button className="btn btn-error btn-xs text-white">Delete</button>
+                                            <button onClick={() => document.getElementById(`my_modal_${index}`).showModal()} className="btn btn-success btn-xs text-white">Update</button>
+                                            <PostModal singleApplication={singleApplication} index={index} />
+                                            <button className="btn btn-error btn-xs text-white" onClick={() => handleDelete(singleApplication._id)}>Delete</button>
                                         </div>
                                     </th>
                                 </tr>
                             )
                         }
                     </tbody>
-                </table> : <div>
-                    <EmptyProduct title={'You did not post any volunteer needed posts'} />
-                    <button>Add Posts Now</button>
-                </div>
+                </table>
             }
             {/* Open the modal using document.getElementById('ID').showModal() method */}
         </div>
