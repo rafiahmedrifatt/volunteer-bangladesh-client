@@ -15,7 +15,7 @@ const Navbar = () => {
                 <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/posts">Posts</NavLink>
             </li>
 
-            <li>
+            {user ? <li>
                 <button className="text-gray-500 transition hover:text-gray-500/75" popoverTarget="popover-1" style={{ anchorName: "--anchor-1" } /* as React.CSSProperties */}>
                     My profile
                 </button>
@@ -27,7 +27,7 @@ const Navbar = () => {
                     </li>
                     <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to='neededPosts'>Manage My Posts</NavLink></li>
                 </ul>
-            </li>
+            </li> : ""}
         </>
 
     const hoveredContent = <div

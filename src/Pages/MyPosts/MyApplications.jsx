@@ -10,7 +10,11 @@ const MyApplications = () => {
     const [applications, setApplications] = useState([])
     console.log(applications);
     useEffect(() => {
-        fetch(`http://localhost:3000/myApplication?email=${user?.email}`).then(res => res.json()).then(data => setApplications(data))
+        fetch(`http://localhost:3000/myApplication?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(res => res.json()).then(data => setApplications(data))
     }, [user])
 
     const handleDelete = (id) => {

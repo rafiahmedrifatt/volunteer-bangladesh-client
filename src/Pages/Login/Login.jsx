@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import AuthData from '../../hook/AuthData';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const location = useLocation()
@@ -12,7 +13,13 @@ const Login = () => {
         const form = e.target
         const email = form.email.value;
         const password = form.password.value;
-        signIn(email, password).then(() => navigate(location.state ? location.state : '')).catch(err => console.log(err))
+        signIn(email, password).then(() => navigate(location.state?.from || '/')).catch(() => {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Incorrect Email or Password!",
+            });
+        })
     }
 
     const handleGoogleSignIn = () => {

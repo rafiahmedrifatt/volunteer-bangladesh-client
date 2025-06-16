@@ -13,7 +13,7 @@ const Posts = ({ posts }) => {
                 }
             </div>
             <div className='text-center'>
-                <Link to="/posts" className='btn btn-accent w-50 my-10'>See More</Link>
+                <Link to="/posts" className='btn btn-accent w-50 my-10 text-white'>See More</Link>
             </div>
         </div>
     );

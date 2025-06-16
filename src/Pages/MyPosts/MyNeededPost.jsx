@@ -13,7 +13,11 @@ const MyNeededPost = () => {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/posts?email=${user.email}`)
+            fetch(`http://localhost:3000/post?email=${user.email}`, {
+                headers: {
+                    authorization: `Bearer ${user.accessToken}`
+                }
+            })
                 .then(res => res.json())
                 .then(data => setPosts(data));
         }

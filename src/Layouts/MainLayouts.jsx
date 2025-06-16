@@ -12,7 +12,9 @@ const MainLayouts = () => {
             <div className='min-h-screen'>
                 <Outlet />
             </div>
-            <Footer />
+            <div className='bg-green-50'>
+                <Footer />
+            </div>
 
         </div>
     );
