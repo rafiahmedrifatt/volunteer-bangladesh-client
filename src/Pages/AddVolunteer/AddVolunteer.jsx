@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import AuthData from '../../hook/AuthData';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const AddVolunteer = () => {
     const { user } = AuthData()
@@ -36,6 +37,9 @@ const AddVolunteer = () => {
 
     return (
         <div className="max-w-xl mx-auto p-6 rounded-lg shadow-md mt-10">
+            <Helmet>
+                <title>Add Volunteer Post | Add Now</title>
+            </Helmet>
             <h1 className="text-2xl font-bold mb-6 text-center">Add Volunteer Need Post</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Thumbnail */}

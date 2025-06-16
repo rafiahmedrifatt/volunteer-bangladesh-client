@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import EmptyProduct from '../../Components/EmptyProduct/EmptyProduct';
 import PostModal from '../../Components/PostModal/PostModal';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const MyNeededPost = () => {
     const { user } = AuthData()
@@ -24,6 +25,9 @@ const MyNeededPost = () => {
 
     return (
         <div className="overflow-x-auto m-5">
+            <Helmet>
+                <title>My Posts | All</title>
+            </Helmet>
             <div className='w-full flex justify-end'>
                 <Link to="/applications" className='btn btn-success text-white'>See Your Volunteer Requests <FaArrowRight /></Link>
             </div>

@@ -28,9 +28,6 @@ const Navbar = () => {
                     <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to='neededPosts'>Manage My Posts</NavLink></li>
                 </ul>
             </li>
-            <li>
-                <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/addVolunteerPosts">Add Posts</NavLink>
-            </li>
         </>
 
     const hoveredContent = <div

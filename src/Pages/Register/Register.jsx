@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import AuthData from '../../hook/AuthData';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
     const { signUp, update } = AuthData()
@@ -37,6 +38,9 @@ const Register = () => {
 
     return (
         <div className='grid grid-cols-2 gap-0 w-8/12 mx-auto h-80vh bg-base-200 border-base-300 border h-90vh mt-10'>
+            <Helmet>
+                <title>Register | Register Now</title>
+            </Helmet>
 
             <form onSubmit={handleSubmit} className="fieldset my-auto w-10/12 mx-auto">
                 <legend className="fieldset-legend text-2xl">Register</legend>

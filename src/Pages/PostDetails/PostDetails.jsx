@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import VolunteerModal from '../../Components/VolunteerModal/VolunteerModal';
+import { Helmet } from 'react-helmet-async';
 
 const PostDetails = () => {
     const data = useLoaderData()
@@ -9,6 +10,9 @@ const PostDetails = () => {
     const [volunteersNumber, setVolunteersNumber] = useState(volunteersNeeded)
     return (
         <div className="block rounded-lg p-4 shadow-xs shadow-indigo-100 w-8/12 mx-auto">
+            <Helmet>
+                <title>Post Details | {postTitle}</title>
+            </Helmet>
             <img
                 alt=""
                 src={thumbnail}

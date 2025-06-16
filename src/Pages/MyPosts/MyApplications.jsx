@@ -3,6 +3,7 @@ import AuthData from '../../hook/AuthData';
 import { Link } from 'react-router';
 import { FaArrowLeft } from 'react-icons/fa';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const MyApplications = () => {
     const { user } = AuthData()
@@ -17,6 +18,9 @@ const MyApplications = () => {
     }
     return (
         <div className="overflow-x-auto">
+            <Helmet>
+                <title>Application | My Volunteer Request</title>
+            </Helmet>
             <div className='w-full flex justify-start p-5'>
                 <Link to="/neededPosts" className='btn btn-success text-white'><FaArrowLeft /> See Your Volunteer Requests </Link>
             </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../Shared/Card';
+import { Helmet } from 'react-helmet-async';
 
 const AllPost = () => {
     const [posts, setPosts] = useState(null)
@@ -9,6 +10,9 @@ const AllPost = () => {
     }, [search])
     return (
         <div className='w-10/12 mx-auto mt-10'>
+            <Helmet>
+                <title>Posts | See All Posts</title>
+            </Helmet>
             <p className='text-3xl text-center my-5'>All Volunteer Needed Posts</p>
             <label htmlFor="Search">
                 <div className="relative w-8/12 h-8 my-5 mx-auto">
