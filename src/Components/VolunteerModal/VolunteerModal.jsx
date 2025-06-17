@@ -13,7 +13,9 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
         const form = e.target;
         const formData = new FormData(form)
         const formObj = Object.fromEntries(formData.entries())
-        axios.post('https://volunteer-project-server.vercel.app/volunteer', { formObj })
+        const { contactPerson, email, volunteersNeeded, ...rest } = formObj;
+        rest.volunteersNeeded = parseInt(volunteersNeeded)
+        axios.post('https://volunteer-project-server.vercel.app/volunteer', { rest })
             .then(res => {
                 if (res.data.insertedId) {
                     axios.patch(`https://volunteer-project-server.vercel.app/posts/${_id}`).then(() => {
