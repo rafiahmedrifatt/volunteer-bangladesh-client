@@ -4,7 +4,7 @@ import AuthData from './AuthData';
 
 
 const instance = axios.create({
-    baseURL: "https://volunteer-project-server.vercel.app/"
+    baseURL: "http://localhost:3000/"
 })
 
 

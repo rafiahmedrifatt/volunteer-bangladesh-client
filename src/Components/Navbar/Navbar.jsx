@@ -119,7 +119,7 @@ const Navbar = () => {
 
                     <div className="hidden md:relative md:block">
                         {
-                            user?.email || user?.name ? <motion.button initial={{ scale: 0 }} animate={{ scale: 1 }}
+                            user?.email || user?.name ? <button initial={{ scale: 0 }} animate={{ scale: 1 }}
                                 whileTap={{ scale: 0.8 }}
                                 type="button"
                                 className="overflow-hidden rounded-full border border-gray-300 shadow-inner"
@@ -133,25 +133,25 @@ const Navbar = () => {
                                         className="size-10 object-cover"
                                     />
                                 </Tippy>
-                            </motion.button> :
+                            </button> :
                                 <div className="sm:flex sm:gap-4">
-                                    <motion.Link
+                                    <Link
                                         initial={{ scale: 0 }} animate={{ scale: 1 }}
                                         whileTap={{ scale: 0.8 }}
                                         className="block rounded-md  px-5 py-2.5 text-sm font-medium bg-teal-600 text-white transition hover:bg-teal-700"
                                         to='/login'
                                     >
                                         Login
-                                    </motion.Link>
+                                    </Link>
 
-                                    <motion.Link
+                                    <Link
                                         initial={{ scale: 0 }} animate={{ scale: 1 }}
                                         whileTap={{ scale: 0.8 }}
                                         className="hidden rounded-md  px-5 py-2.5 text-sm font-medium bg-gray-100 text-teal-600 transition hover:text-teal-600/75 sm:block"
                                         to="/register"
                                     >
                                         Register
-                                    </motion.Link>
+                                    </Link>
                                 </div>
                         }
 
@@ -217,12 +217,12 @@ const Navbar = () => {
 
                                     </button> :
                                         <div className="flex flex-col gap-2">
-                                            <motion.Link
+                                            <Link
                                                 initial={{ scale: 0 }} animate={{ scale: 1 }} className="block rounded-md  px-5 py-2.5 text-sm font-medium bg-teal-600 text-white transition hover:bg-teal-700"
                                                 to='/login'
                                             >
                                                 Login
-                                            </motion.Link>
+                                            </Link>
 
                                             <Link
                                                 className=" rounded-md  px-5 py-2.5 text-sm font-medium bg-gray-100 text-teal-600 transition hover:text-teal-600/75 sm:block"

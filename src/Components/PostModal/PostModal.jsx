@@ -16,7 +16,7 @@ const PostModal = ({ singleApplication, index }) => {
         const { contactPerson, email, ...rest } = formObj;
         (contactPerson, email);
         rest.deadline = date
-        axios.patch(`https://volunteer-project-server.vercel.app/updatePosts/${_id}`, rest).then(response => {
+        axios.patch(`http://localhost:3000/updatePosts/${_id}`, rest).then(response => {
             if (response.data.modifiedCount > 0) {
                 document.getElementById(`my_modal_${index}`).close()
                 Swal.fire({

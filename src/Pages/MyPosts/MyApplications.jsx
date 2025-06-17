@@ -10,7 +10,7 @@ const MyApplications = () => {
     const { user } = AuthData()
     const [applications, setApplications] = useState([])
     useEffect(() => {
-        fetch(`https://volunteer-project-server.vercel.app/myApplication?email=${user?.email}`, {
+        fetch(`http://localhost:3000/myApplication?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -28,7 +28,7 @@ const MyApplications = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://volunteer-project-server.vercel.app/volunteer/${id}`).then((res) => {
+                axios.delete(`http://localhost:3000/volunteer/${id}`).then((res) => {
                     const filteredUI = applications.filter(application => application._id !== id)
                     setApplications(filteredUI)
                     console.log(res);
