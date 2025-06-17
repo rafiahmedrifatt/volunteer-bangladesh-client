@@ -13,9 +13,9 @@ const PostModal = ({ singleApplication, index }) => {
         const form = e.target;
         const formData = new FormData(form)
         const formObj = Object.fromEntries(formData);
-        const { contactPerson, email, ...rest } = formObj;
-        (contactPerson, email);
+        const { contactPerson, email, volunteersNeeded, ...rest } = formObj;
         rest.deadline = date
+        rest.volunteersNeeded = parseInt(volunteersNeeded)
         axios.patch(`https://volunteer-project-server.vercel.app/updatePosts/${_id}`, rest).then(response => {
             if (response.data.modifiedCount > 0) {
                 document.getElementById(`my_modal_${index}`).close()
