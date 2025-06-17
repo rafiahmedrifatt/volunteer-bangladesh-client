@@ -41,7 +41,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                             type="text"
                             name='thumbnail'
                             value={thumbnail}
-                            className="w-full px-3 py-2 border rounded-md"
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md"
                             readOnly
                         />
                     </div>
@@ -51,7 +51,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                         <label className="block mb-1 font-semibold">Post Title</label>
                         <input
                             type="text"
-                            className="w-full px-3 py-2 border rounded-md"
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md"
                             name='postTitle'
                             value={postTitle}
                             placeholder="Enter post title"
@@ -63,7 +63,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                     <div>
                         <label className="block mb-1 font-semibold">Description</label>
                         <textarea
-                            className="w-full px-3 py-2 border rounded-md"
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md"
                             value={description}
                             name='description'
                             readOnly
@@ -75,7 +75,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                         <label className="block mb-1 font-semibold">Category</label>
                         <input type="text"
                             name='category'
-                            className='w-full px-3 py-2 border rounded-md'
+                            className='w-full px-3 py-2 border border-gray-200 rounded-md'
                             value={category}
                             readOnly />
                     </div>
@@ -85,7 +85,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                         <label className="block mb-1 font-semibold">Location</label>
                         <input
                             type="text"
-                            className="w-full px-3 py-2 border rounded-md"
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md"
                             name='location'
                             value={location}
                             readOnly
@@ -98,7 +98,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                         <input
                             type="text"
                             value={volunteersNumber}
-                            className="w-full px-3 py-2 border rounded-md "
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md "
                             name='volunteerNeeded'
                             readOnly
                         />
@@ -109,7 +109,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                             name='deadline'
                             type="text"
                             value={deadline}
-                            className="w-full px-3 py-2 border rounded-md "
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md "
                             readOnly
                         />
                     </div>
@@ -119,7 +119,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                             type="text"
                             name='organizationName'
                             value={organizerInfo?.organizationName}
-                            className="w-full px-3 py-2 border rounded-md "
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md "
                             readOnly
                         />
                     </div>
@@ -129,7 +129,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                             type="text"
                             name='organizerName'
                             value={organizerInfo?.contactPerson}
-                            className="w-full px-3 py-2 border rounded-md "
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md "
                             readOnly
                         />
                     </div>
@@ -140,7 +140,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                             type="text"
                             name='organizerEmail'
                             value={organizerInfo?.email}
-                            className="w-full px-3 py-2 border rounded-md "
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md "
                             readOnly
                         />
                     </div>
@@ -151,7 +151,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                             name='volunteerEmail'
                             type="text"
                             value={user?.email}
-                            className="w-full px-3 py-2 border rounded-md "
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md "
                             readOnly
                         />
                     </div>
@@ -161,7 +161,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                             name='volunteerName'
                             type="text"
                             value={user?.displayName}
-                            className="w-full px-3 py-2 border rounded-md "
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md "
                             readOnly
                         />
                     </div>
@@ -170,7 +170,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                         <input
                             name='Suggestions'
                             type="text"
-                            className="w-full px-3 py-2 border rounded-md "
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md "
                         />
                     </div>
                     <div>
@@ -179,7 +179,7 @@ const VolunteerModal = ({ data, setVolunteersNumber, volunteersNumber }) => {
                             name='Status'
                             type="text"
                             value={'requested'}
-                            className="w-full px-3 py-2 border rounded-md "
+                            className="w-full px-3 py-2 border border-gray-200 rounded-md "
                             readOnly
                         />
                     </div>

@@ -40,7 +40,7 @@ const AddVolunteer = () => {
     };
 
     return (
-        <div className="max-w-xl mx-auto p-6 rounded-lg shadow-md mt-10">
+        <div className="max-w-2xl mx-auto p-6 rounded-lg shadow-md my-20">
             <Helmet>
                 <title>Add Volunteer Post | Add Now</title>
             </Helmet>
@@ -53,7 +53,7 @@ const AddVolunteer = () => {
                         type="text"
                         name='thumbnail'
                         placeholder='Thumbnail'
-                        className="w-full px-3 py-2 border rounded-md"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-md"
                         required
                     />
                 </div>
@@ -63,7 +63,7 @@ const AddVolunteer = () => {
                     <label className="block mb-1 font-semibold">Post Title</label>
                     <input
                         type="text"
-                        className="w-full px-3 py-2 border rounded-md"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-md"
                         name='postTitle'
                         placeholder="Enter post title"
                         required
@@ -74,7 +74,7 @@ const AddVolunteer = () => {
                 <div>
                     <label className="block mb-1 font-semibold">Description</label>
                     <textarea
-                        className="w-full px-3 py-2 border rounded-md"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-md"
                         placeholder="Describe the volunteer need"
                         name='description'
                         required
@@ -85,7 +85,7 @@ const AddVolunteer = () => {
                 <div>
                     <label className="block mb-1 font-semibold">Category</label>
                     <select
-                        className="w-full px-3 py-2 border rounded-md"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-md"
                         name='category'
                         required
                     >
@@ -102,7 +102,7 @@ const AddVolunteer = () => {
                     <label className="block mb-1 font-semibold">Location</label>
                     <input
                         type="text"
-                        className="w-full px-3 py-2 border rounded-md"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-md"
                         placeholder="Enter location"
                         name='location'
                         required
@@ -114,7 +114,7 @@ const AddVolunteer = () => {
                     <label className="block mb-1 font-semibold">No. of Volunteers Needed</label>
                     <input
                         type="number"
-                        className="w-full px-3 py-2 border rounded-md"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-md"
                         placeholder="Number of volunteers"
                         name='volunteersNeeded'
                         required
@@ -127,7 +127,7 @@ const AddVolunteer = () => {
                     <DatePicker
                         selected={deadline}
                         onChange={(date) => setDeadline(date)}
-                        className="w-full px-3 py-2 border rounded-md"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-md"
                         placeholderText="Select deadline"
                         dateFormat="yyyy/MM/dd"
                         required
@@ -141,7 +141,7 @@ const AddVolunteer = () => {
                         value={user.displayName}
                         name='contactPerson'
                         readOnly
-                        className="w-full px-3 py-2 border rounded-md "
+                        className="w-full px-3 py-2 border border-gray-200 rounded-md "
                     />
                 </div>
 
@@ -152,7 +152,7 @@ const AddVolunteer = () => {
                         name='email'
                         value={user.email}
                         readOnly
-                        className="w-full px-3 py-2 border rounded-md"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-md"
                     />
                 </div>
 

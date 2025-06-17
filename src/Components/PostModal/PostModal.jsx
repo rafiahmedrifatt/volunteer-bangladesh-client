@@ -32,7 +32,7 @@ const PostModal = ({ singleApplication, index }) => {
     return (
         <dialog id={`my_modal_${index}`} className="modal p-10">
             <div className="modal-box m-10">
-                <div className="max-w-xl mx-auto p-6 rounded-lg mt-10">
+                <div className="max-w-2xl mx-auto p-6 rounded-lg mt-10">
                     <h1 className="text-2xl font-bold mb-6 text-center">Add Volunteer Need Post</h1>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         {/* Thumbnail */}
@@ -43,7 +43,7 @@ const PostModal = ({ singleApplication, index }) => {
                                 name='thumbnail'
                                 defaultValue={thumbnail}
                                 placeholder='Thumbnail'
-                                className="w-full px-3 py-2 border rounded-md"
+                                className="w-full px-3 py-2 border border-gray-200 rounded-md"
                                 required
                             />
                         </div>
@@ -53,7 +53,7 @@ const PostModal = ({ singleApplication, index }) => {
                             <label className="block mb-1 font-semibold">Post Title</label>
                             <input
                                 type="text"
-                                className="w-full px-3 py-2 border rounded-md"
+                                className="w-full px-3 py-2 border border-gray-200 rounded-md"
                                 name='postTitle'
                                 placeholder="Enter post title"
                                 defaultValue={postTitle}
@@ -66,7 +66,7 @@ const PostModal = ({ singleApplication, index }) => {
                             <label className="block mb-1 font-semibold">Description</label>
                             <textarea
                                 defaultValue={description}
-                                className="w-full px-3 py-2 border rounded-md"
+                                className="w-full px-3 py-2 border border-gray-200 rounded-md"
                                 placeholder="Describe the volunteer need"
                                 name='description'
                                 required
@@ -77,7 +77,7 @@ const PostModal = ({ singleApplication, index }) => {
                         <div>
                             <label className="block mb-1 font-semibold">Category</label>
                             <select
-                                className="w-full px-3 py-2 border rounded-md"
+                                className="w-full px-3 py-2 border border-gray-200 rounded-md"
                                 name='category'
                                 defaultValue={category}
                                 required
@@ -96,7 +96,7 @@ const PostModal = ({ singleApplication, index }) => {
                             <input
                                 type="text"
                                 defaultValue={location}
-                                className="w-full px-3 py-2 border rounded-md"
+                                className="w-full px-3 py-2 border border-gray-200 rounded-md"
                                 placeholder="Enter location"
                                 name='location'
                                 required
@@ -109,7 +109,7 @@ const PostModal = ({ singleApplication, index }) => {
                             <input
                                 type="number"
                                 defaultValue={volunteersNeeded}
-                                className="w-full px-3 py-2 border rounded-md"
+                                className="w-full px-3 py-2 border border-gray-200 rounded-md"
                                 placeholder="Number of volunteers"
                                 name='volunteersNeeded'
                                 required
@@ -122,7 +122,7 @@ const PostModal = ({ singleApplication, index }) => {
                             <DatePicker
                                 selected={deadline}
                                 onChange={(date) => setDate(date)}
-                                className="w-full px-3 py-2 border rounded-md"
+                                className="w-full px-3 py-2 border border-gray-200 rounded-md"
                                 placeholderText="Select deadline"
                                 dateFormat="yyyy/MM/dd"
                                 required
@@ -137,7 +137,7 @@ const PostModal = ({ singleApplication, index }) => {
                                 value={user.displayName}
                                 name='contactPerson'
                                 readOnly
-                                className="w-full px-3 py-2 border rounded-md "
+                                className="w-full px-3 py-2 border border-gray-200 rounded-md "
                             />
                         </div>
 
@@ -148,7 +148,7 @@ const PostModal = ({ singleApplication, index }) => {
                                 name='email'
                                 value={user.email}
                                 readOnly
-                                className="w-full px-3 py-2 border rounded-md"
+                                className="w-full px-3 py-2 border border-gray-200 rounded-md"
                             />
                         </div>
 

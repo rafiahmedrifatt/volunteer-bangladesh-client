@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { FaArrowLeft } from 'react-icons/fa';
 import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const MyApplications = () => {
     const { user } = AuthData()
@@ -18,7 +19,31 @@ const MyApplications = () => {
     }, [user])
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3000/volunteer/${id}`).then(res => console.log(res)).catch(err => console.log(err))
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:3000/volunteer/${id}`).then((res) => {
+                    console.log(res.data);
+                    if (res.data.deletedCount > 0) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    }
+
+                })
+                    .catch(err => console.log(err))
+
+            }
+        });
     }
     return (
         <div className="overflow-x-auto">
