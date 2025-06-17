@@ -6,7 +6,7 @@ import TestimonialsSection from './TestimonialsSection';
 import ImpactStories from './ImpactStories';
 
 const Home = () => {
-    const posts = fetch('http://localhost:3000/posts?limit=6').then(res => res.json())
+    const posts = fetch('https://volunteer-project-server.vercel.app/posts?limit=6').then(res => res.json())
     return (
         <div>
             <Helmet>

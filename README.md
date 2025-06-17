@@ -6,8 +6,7 @@ VolunteerConnect is a user-friendly platform for managing volunteer activities. 
 
 ## 🌐 Live URL
 
-[🔗 Live Website](https://your-volunteer-site.web.app)  
-[🔗 Server Live URL (Vercel)](https://your-volunteer-api.vercel.app)
+[🔗 Live Website](https://volunteer-management-project.web.app/)
 
 ## 🛠️ Key Features
 

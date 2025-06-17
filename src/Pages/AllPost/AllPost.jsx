@@ -13,7 +13,7 @@ const AllPost = () => {
     const [search, setSearch] = useState('')
     const [layout, setLayout] = useState('grid')
 
-    const postPromise = fetch(`http://localhost:3000/posts?search=${search}`).then(res => res.json())
+    const postPromise = fetch(`https://volunteer-project-server.vercel.app/posts?search=${search}`).then(res => res.json())
     return (
         <div className='w-10/12 mx-auto mt-10'>
             <Helmet>

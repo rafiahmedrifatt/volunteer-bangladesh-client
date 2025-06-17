@@ -23,7 +23,7 @@ const AddVolunteer = () => {
 
         const formattedDate = format(deadline, 'yyyy-MM-dd')
         data.deadline = formattedDate;
-        axios.post('http://localhost:3000/posts', { data }, {
+        axios.post('https://volunteer-project-server.vercel.app/posts', { data }, {
             headers: {
                 Authorization: `Bearer ${user.accessToken}`
             }
