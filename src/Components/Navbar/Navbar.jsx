@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import Tippy from '@tippyjs/react';
 import AuthData from '../../hook/AuthData';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion" // eslint-disable-line no-unused-vars
 
 const Navbar = () => {
     const { user, logOut } = AuthData()
