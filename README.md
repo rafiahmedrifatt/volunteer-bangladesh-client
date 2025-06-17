@@ -43,17 +43,25 @@ VolunteerConnect is a user-friendly platform for managing volunteer activities. 
 
 ## 📦 NPM Packages Used
 
-### Client Side
+### ⚛️ Client Dependencies
 
-- `react-router-dom`
-- `firebase`
-- `axios`
-- `react-datepicker`
-- `sweetalert2`
-- `framer-motion`
-- `react-helmet-async`
-- `react-icons`
-- `tailwindcss` `daisyUI`
+| Package                                            | Purpose              |
+| -------------------------------------------------- | -------------------- |
+| `react` / `react-dom`                              | Core React           |
+| `react-router`                                     | Routing              |
+| `firebase`                                         | Auth & Firestore     |
+| `axios`                                            | API calls            |
+| `react-datepicker`                                 | Date input           |
+| `sweetalert2`                                      | Pop-up notifications |
+| `react-icons`                                      | Icons                |
+| `react-helmet-async`                               | Dynamic titles       |
+| `@tippyjs/react`                                   | Tooltips             |
+| `date-fns`                                         | Date manipulation    |
+| `embla-carousel-react` & `embla-carousel-autoplay` | Sliders              |
+| `lottie-react`                                     | Animations           |
+| `tailwindcss`                                      | Utility-first CSS    |
+| `@tailwindcss/vite`                                | Tailwind integration |
+| `daisyui`                                          | Tailwind UI plugin   |
 
 ## ⚙️ Setup Instructions (Local Development)
 

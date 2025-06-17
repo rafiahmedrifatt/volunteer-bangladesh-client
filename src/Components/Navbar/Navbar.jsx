@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import Tippy from '@tippyjs/react';
 import AuthData from '../../hook/AuthData';
+import { motion } from "framer-motion"
 
 const Navbar = () => {
     const { user, logOut } = AuthData()
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
-    console.log(theme);
 
     useEffect(() => {
         localStorage.setItem('theme', theme)
@@ -20,14 +20,18 @@ const Navbar = () => {
 
     const links =
         <>
-            <li>
+            <motion.li initial={{ scale: 0 }} animate={{ scale: 1 }}
+                whileTap={{ scale: 0.8 }}
+            >
                 <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/">Home</NavLink>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li initial={{ scale: 0 }} animate={{ scale: 1 }}
+                whileTap={{ scale: 0.8 }}>
                 <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/posts">Posts</NavLink>
-            </li>
+            </motion.li>
 
-            {user ? <li>
+            {user ? <motion.li initial={{ scale: 0 }} animate={{ scale: 1 }}
+                whileTap={{ scale: 0.8 }}>
                 <button className="text-gray-500 transition hover:text-gray-500/75" popoverTarget="popover-1" style={{ anchorName: "--anchor-1" } /* as React.CSSProperties */}>
                     My profile
                 </button>
@@ -39,7 +43,7 @@ const Navbar = () => {
                     </li>
                     <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to='neededPosts'>Manage My Posts</NavLink></li>
                 </ul>
-            </li> : ""}
+            </motion.li> : ""}
         </>
 
     const hoveredContent = <div
@@ -54,7 +58,6 @@ const Navbar = () => {
             <button
                 onClick={() => logOut()}
                 className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
-                role="menuitem"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -80,11 +83,12 @@ const Navbar = () => {
             <div className="flex h-20 items-center justify-between">
                 <div className="flex-1 md:flex md:items-center md:gap-12">
                     <Link to='/' className="block text-teal-600" href="#">
-                        <p className='text-2xl font-bold text-green-500'>Volunteer Bangladesh</p>
+                        <motion.p initial={{ scale: 0 }} animate={{ scale: 1 }}
+                            whileTap={{ scale: 0.8 }} className='text-2xl font-bold text-green-500'>Volunteer Bangladesh</motion.p>
                     </Link>
                 </div>
 
-                <div className="md:flex md:items-center md:gap-12">
+                <div className="flex md:items-center gap-5 md:gap-12">
                     <nav aria-label="Global" className="hidden md:block">
                         <ul className="flex items-center gap-6 text-sm">
                             {links}
@@ -115,7 +119,8 @@ const Navbar = () => {
 
                     <div className="hidden md:relative md:block">
                         {
-                            user?.email || user?.name ? <button
+                            user?.email || user?.name ? <motion.button initial={{ scale: 0 }} animate={{ scale: 1 }}
+                                whileTap={{ scale: 0.8 }}
                                 type="button"
                                 className="overflow-hidden rounded-full border border-gray-300 shadow-inner"
                             >
@@ -128,41 +133,108 @@ const Navbar = () => {
                                         className="size-10 object-cover"
                                     />
                                 </Tippy>
-                            </button> :
+                            </motion.button> :
                                 <div className="sm:flex sm:gap-4">
-                                    <Link
+                                    <motion.Link
+                                        initial={{ scale: 0 }} animate={{ scale: 1 }}
+                                        whileTap={{ scale: 0.8 }}
                                         className="block rounded-md  px-5 py-2.5 text-sm font-medium bg-teal-600 text-white transition hover:bg-teal-700"
                                         to='/login'
                                     >
                                         Login
-                                    </Link>
+                                    </motion.Link>
 
-                                    <Link
+                                    <motion.Link
+                                        initial={{ scale: 0 }} animate={{ scale: 1 }}
+                                        whileTap={{ scale: 0.8 }}
                                         className="hidden rounded-md  px-5 py-2.5 text-sm font-medium bg-gray-100 text-teal-600 transition hover:text-teal-600/75 sm:block"
                                         to="/register"
                                     >
                                         Register
-                                    </Link>
+                                    </motion.Link>
                                 </div>
                         }
 
                     </div>
 
                     <div className="block md:hidden">
-                        <button
-                            className="rounded-sm bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="size-5"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth="2"
+                        <div className="dropdown dropdown-bottom dropdown-end">
+
+                            <button tabIndex={0} role="button"
+                                className="rounded-sm bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
                             >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="size-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            </button>
+                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                                {
+                                    links
+                                }
+                                {
+                                    user?.email || user?.name ? <button
+                                        type="button"
+                                        className="overflow-hidden border border-gray-300 shadow-inner"
+                                    >
+                                        <li>
+                                            <NavLink className="text-gray-500 transition hover:text-gray-500/75" to="/addVolunteerPosts">Add Volunteer Need Posts</NavLink>
+                                        </li>
+                                        <li><NavLink className="text-gray-500 transition hover:text-gray-500/75" to='neededPosts'>Manage My Posts</NavLink></li>
+                                        <div>
+
+                                            <div className="p-2">
+                                                <button
+                                                    onClick={() => logOut()}
+                                                    className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
+                                                    role="menuitem"
+                                                >
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        strokeWidth="1.5"
+                                                        stroke="currentColor"
+                                                        className="size-4"
+                                                    >
+                                                        <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+                                                        />
+                                                    </svg>
+
+                                                    Logout
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </button> :
+                                        <div className="flex flex-col gap-2">
+                                            <motion.Link
+                                                initial={{ scale: 0 }} animate={{ scale: 1 }} className="block rounded-md  px-5 py-2.5 text-sm font-medium bg-teal-600 text-white transition hover:bg-teal-700"
+                                                to='/login'
+                                            >
+                                                Login
+                                            </motion.Link>
+
+                                            <Link
+                                                className=" rounded-md  px-5 py-2.5 text-sm font-medium bg-gray-100 text-teal-600 transition hover:text-teal-600/75 sm:block"
+                                                to="/register"
+                                            >
+                                                Register
+                                            </Link>
+                                        </div>
+                                }
+                            </ul>
+
+                        </div>
                     </div>
                 </div>
             </div>

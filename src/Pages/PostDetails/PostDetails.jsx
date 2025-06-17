@@ -9,7 +9,7 @@ const PostDetails = () => {
     const { category, deadline, description, location, postTitle, thumbnail, volunteersNeeded } = data;
     const [volunteersNumber, setVolunteersNumber] = useState(volunteersNeeded)
     return (
-        <div className="block rounded-lg p-4 shadow-xs shadow-indigo-100 w-8/12 mx-auto">
+        <div className="block rounded-lg p-4  shadow w-8/12 mx-auto mt-10">
             <Helmet>
                 <title>Post Details | {postTitle}</title>
             </Helmet>
@@ -26,7 +26,10 @@ const PostDetails = () => {
                         <dd className="font-medium">{postTitle}</dd>
                     </div>
                     <div>
-                        <button className="btn btn-accent" onClick={() => document.getElementById('my_modal_3').showModal()}>Become a Volunteer</button>
+                        {
+                            volunteersNumber === 0 ? <button disabled className='btn btn-accent'>Become a Volunteer</button> :
+                                <button className="btn btn-accent" onClick={() => document.getElementById('my_modal_3').showModal()}>Become a Volunteer</button>
+                        }
                         {/* THIS MODAL WILL BE OPEN WHEN SOMEONE WILL CLICK ON THE BUTTON ABOVE */}
                         <VolunteerModal data={data} setVolunteersNumber={setVolunteersNumber} volunteersNumber={volunteersNumber}></VolunteerModal>
                     </div>
@@ -36,7 +39,7 @@ const PostDetails = () => {
                     <p>Category: {category}</p>
                     <p>Location: {location}</p>
                     <p>Volunteer Needed: {volunteersNumber}</p>
-                    <p>{description}</p>
+                    <p>Description: {description}</p>
 
                 </div>
             </div>

@@ -13,7 +13,7 @@ const MyNeededPost = () => {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/post?email=${user.email}`, {
+            fetch(`https://volunteer-project-server.vercel.app/post?email=${user.email}`, {
                 headers: {
                     authorization: `Bearer ${user.accessToken}`
                 }
@@ -35,7 +35,9 @@ const MyNeededPost = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/posts/${id}`).then((res) => {
+                const filteredUI = posts.filter(post => post._id !== id)
+                setPosts(filteredUI)
+                axios.delete(`https://volunteer-project-server.vercel.app/posts/${id}`).then((res) => {
                     if (res.data.deletedCount > 0) {
                         Swal.fire({
                             title: "Deleted!",

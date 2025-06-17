@@ -9,9 +9,8 @@ import Swal from 'sweetalert2';
 const MyApplications = () => {
     const { user } = AuthData()
     const [applications, setApplications] = useState([])
-    console.log(applications);
     useEffect(() => {
-        fetch(`http://localhost:3000/myApplication?email=${user?.email}`, {
+        fetch(`https://volunteer-project-server.vercel.app/myApplication?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -29,9 +28,11 @@ const MyApplications = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/volunteer/${id}`).then((res) => {
-                    console.log(res.data);
-                    if (res.data.deletedCount > 0) {
+                axios.delete(`https://volunteer-project-server.vercel.app/volunteer/${id}`).then((res) => {
+                    const filteredUI = applications.filter(application => application._id !== id)
+                    setApplications(filteredUI)
+                    console.log(res);
+                    if (res.deletedCount === 1) {
                         Swal.fire({
                             title: "Deleted!",
                             text: "Your file has been deleted.",

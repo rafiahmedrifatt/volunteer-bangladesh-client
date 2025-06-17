@@ -1,52 +1,57 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import Card from '../Shared/Card';
 import { Helmet } from 'react-helmet-async';
+import Loader from '../../Components/Loader/Loader';
+import GridPosts from './GridPosts';
+import ColumnPosts from './ColumnPosts';
+import { RiGridFill } from "react-icons/ri";
+import { LuListCollapse } from "react-icons/lu";
+
 
 const AllPost = () => {
-    const [posts, setPosts] = useState(null)
+    // const [posts, setPosts] = useState(null)
     const [search, setSearch] = useState('')
-    useEffect(() => {
-        fetch(`http://localhost:3000/posts?search=${search}`).then(res => res.json()).then(data => setPosts(data))
-    }, [search])
+    const [layout, setLayout] = useState('grid')
+
+    const postPromise = fetch(`https://volunteer-project-server.vercel.app/posts?search=${search}`).then(res => res.json())
     return (
         <div className='w-10/12 mx-auto mt-10'>
             <Helmet>
                 <title>Posts | See All Posts</title>
             </Helmet>
             <p className='text-3xl text-center my-5'>All Volunteer Needed Posts</p>
-            <label htmlFor="Search">
-                <div className="relative w-8/12 h-8 my-5 mx-auto">
-                    <input
-                        type="text"
-                        id="Search"
-                        placeholder='Search Your Preferable Work'
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="mt-0.5 w-full rounded border-gray-300 pe-10 shadow-sm h-full sm:text-sm p-5"
-                    />
-
-                    <span className="absolute inset-y-0 right-2 grid w-8 place-content-center p-5 mt-0.5">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-5 p-10 items-center'>
+                <label className="input col-span-2 w-full">
+                    <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g
+                            strokeLinejoin="round"
+                            strokeLinecap="round"
+                            strokeWidth="2.5"
                             fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
                             stroke="currentColor"
-                            className="size-4"
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                            />
-                        </svg>
-                    </span>
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                    <input type="search" onChange={(e) => setSearch(e.target.value)} required placeholder="Search" />
+                </label>
+                <div className='flex gap-5'>
+                    <RiGridFill size={30} className={layout === 'grid' ? 'text-blue-400' : ''} onClick={() => setLayout('grid')} />
+                    <LuListCollapse size={30} className={layout === 'column' ? 'text-blue-400' : ''} onClick={() => setLayout('column')} />
                 </div>
-            </label>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-                {
-                    posts?.map(postData => <Card key={postData._id} postData={postData} />)
-                }
+
             </div>
+            {
+                layout === 'grid' ?
+                    <Suspense fallback={<Loader />}>
+                        <GridPosts postPromise={postPromise} />
+                    </Suspense> :
+                    <Suspense fallback={<Loader />}>
+                        <ColumnPosts postPromise={postPromise} />
+                    </Suspense>
+
+            }
         </div>
     );
 };

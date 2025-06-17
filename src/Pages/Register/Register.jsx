@@ -37,7 +37,7 @@ const Register = () => {
     }
 
     return (
-        <div className='grid grid-cols-2 gap-0 w-8/12 mx-auto h-80vh bg-base-200 border-base-300 border h-90vh mt-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-0 w-8/12 mx-auto h-80vh bg-base-200 border-base-300 border h-90vh mt-10'>
             <Helmet>
                 <title>Register | Register Now</title>
             </Helmet>

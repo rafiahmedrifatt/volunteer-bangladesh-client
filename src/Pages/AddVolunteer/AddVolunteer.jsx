@@ -16,14 +16,14 @@ const AddVolunteer = () => {
         e.preventDefault()
         const form = e.target
         const formData = new FormData(form)
-        const { organizationName, contactPerson, email, ...data } = Object.fromEntries(formData)
+        const { organizationName, contactPerson, email, volunteersNeeded, ...data } = Object.fromEntries(formData)
         data.organizerInfo = { organizationName, contactPerson, email }
+        data.volunteersNeeded = parseInt(volunteersNeeded)
 
 
         const formattedDate = format(deadline, 'yyyy-MM-dd')
         data.deadline = formattedDate;
-        console.log(data);
-        axios.post('http://localhost:3000/posts', { data }, {
+        axios.post('https://volunteer-project-server.vercel.app/posts', { data }, {
             headers: {
                 Authorization: `Bearer ${user.accessToken}`
             }
