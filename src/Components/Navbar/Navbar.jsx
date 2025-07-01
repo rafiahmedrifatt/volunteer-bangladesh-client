@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import Tippy from '@tippyjs/react';
@@ -109,17 +110,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            <div className="p-2">
-                <button
-                    onClick={logOut}
-                    className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50 transition-all duration-200 group"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-                    </svg>
-                    Logout
-                </button>
-            </div>
         </div>
     )
 
@@ -144,14 +134,7 @@ const Navbar = () => {
                             whileTap={{ scale: 0.95 }}
                             className="flex items-center gap-2"
                         >
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg">
-                                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                </svg>
-                            </div>
-                            <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                                Volunteer Bangladesh
-                            </span>
+                            <img src="./volunteer.png" className='w-auto h-40' alt="" />
                         </motion.div>
                     </Link>
                 </div>
@@ -182,19 +165,29 @@ const Navbar = () => {
                     {/* Profile / Auth */}
                     <div className="hidden md:relative md:block">
                         {user?.email || user?.name ? (
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                type="button"
-                                className="overflow-hidden rounded-full border-2 border-emerald-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-emerald-300"
-                            >
-                                <span className="sr-only">Toggle dashboard menu</span>
-                                <Tippy content={profileDropdown} >
-                                    <img src={user.photoURL} alt="User" className="w-12 h-12 object-cover" />
-                                </Tippy>
-                            </motion.button>
+                            <div className='flex items-center'>
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    type="button"
+                                    className="overflow-hidden rounded-full border-2 border-emerald-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-emerald-300"
+                                >
+                                    <span className="sr-only">Toggle dashboard menu</span>
+                                    <Tippy content={profileDropdown} >
+                                        <img src={user.photoURL} alt="User" className="w-12 h-12 object-cover" />
+                                    </Tippy>
+                                </motion.button>
+                                <div className="p-2">
+                                    <button
+                                        onClick={logOut}
+                                        className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50 transition-all duration-200 group"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            </div>
                         ) : (
-                            <div className="flex gap-3">
+                            <div className="flex items-center gap-3">
                                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                     <Link
                                         className="px-6 py-2.5 text-sm font-semibold rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white transition-all duration-300 hover:from-emerald-700 hover:to-teal-700 shadow-lg hover:shadow-xl"
@@ -211,6 +204,7 @@ const Navbar = () => {
                                         Register
                                     </Link>
                                 </motion.div>
+
                             </div>
                         )}
                     </div>
